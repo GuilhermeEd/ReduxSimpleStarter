@@ -10,8 +10,8 @@ var api = require('./api');
 
 app.set('port', (process.env.PORT || 8080));
 app.set('views', __dirname + '/public');
-app.set('view engine', 'ejs');
-
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
